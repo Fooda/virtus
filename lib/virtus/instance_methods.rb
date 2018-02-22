@@ -68,6 +68,8 @@ module Virtus
         attributes.each_with_object({}) do |(k, v), h|
           if v.is_a? Array
             h[k] = v.map { |v| hash_if_responds_or_value v }
+          elsif v.nil?
+            h[k] = v
           else
             h[k] = hash_if_responds_or_value v
           end
